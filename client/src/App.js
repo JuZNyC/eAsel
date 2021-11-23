@@ -8,10 +8,15 @@ import {
 } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { createTheme, ThemeProvider, Toolbar } from '@material-ui/core';
+
+// Screen Components
 import PostsListPage from './pages/PostsListPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
+import LoginPage from './components/Login';
+
+// Misc Components
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
@@ -60,6 +65,7 @@ class App extends React.Component {
               {/* add this toolbar to push the rest of the content down on the page, so nothing is hidden by navabar */}
               <Toolbar /> 
               <Route path="/SellWithUs" component={SellArtPage} />
+              <Route path="/login" component={LoginPage} />
             </div>
           </Container>
         </ThemeProvider>

@@ -21,7 +21,7 @@ const navigationLinks = [
     { name: "Buy", href:""},
     { name: "Sell", href: "/SellWithUs" },
     { name: "Cart", href: "" },
-    { name: "Login/Sign Up", href: "" },
+    { name: "Login/Sign Up", href: "/login" },
 ];
 
 const useStyles = makeStyles((theme) => ({
