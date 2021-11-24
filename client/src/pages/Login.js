@@ -1,10 +1,14 @@
 import React from 'react';
 import { 
   Grid, TextField, Typography,  FormControlLabel, Link, Container, 
-  Box, Checkbox, CssBaseline, Avatar, Button } from '@material-ui/core';
+  Box, Checkbox, CssBaseline, Avatar } from '@material-ui/core';
   import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+  import LoginButton from '../components/LoginButton';
+  import LogoutButton from '../components/LogoutButton';
+import { useAuth0 } from "@auth0/auth0-react";
 
-export default function Login() {
+  
+export default function LoginPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -14,10 +18,12 @@ export default function Login() {
       password: data.get('password'),
     });
   };
-
+  const { user } = useAuth0();
   return (
+    
       <Container>
-        <CssBaseline />
+        {JSON.stringify(user, null, 2)}
+        {/* <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
@@ -56,16 +62,16 @@ export default function Login() {
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
-            <Button
+            /> */}
+            <LoginButton
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
-            </Button>
-            <Grid container>
+            </LoginButton>
+            {/* <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
@@ -78,7 +84,16 @@ export default function Login() {
               </Grid>
             </Grid>
           </Box>
-        </Box>
+        </Box> */}
+
+        <LogoutButton
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Log Out
+            </LogoutButton>
       </Container>
   );
 }
