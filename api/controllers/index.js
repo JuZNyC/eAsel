@@ -13,6 +13,7 @@ const authentication = require("./authentication.js")
 // Mount each controller under a specific route. These
 // will be prefixes to all routes defined inside the controller
 
+router.use("/auth", authentication);
 router.use('/users', userController);
 router.use('/artworks', artworkController);
 router.use('/carts', cartController);

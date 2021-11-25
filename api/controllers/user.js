@@ -21,10 +21,9 @@ router.get('/:userid', (req,res) => { // Get User
 });
 
 router.post('/new', (req,res) => {
-    const { name, state, city, zipcode, linkedin, instagram, twitter, facebook } = req.body;
-    // let id;
+    const { firstName, lastName, email, state, city, zipcode, linkedin, instagram, twitter, facebook } = req.body;
     User.create({
-        name, state, city, zipcode
+        firstName, lastName, email, state, city, zipcode
     }).then(user => {
         let completed = true;
         Cart.create({
