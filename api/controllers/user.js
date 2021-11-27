@@ -20,36 +20,6 @@ router.get('/:userid', (req,res) => { // Get User
         })
 });
 
-router.post('/new', (req,res) => {
-    const { name, state, city, zipcode, linkedin, instagram, twitter, facebook } = req.body;
-    // let id;
-    User.create({
-        name, state, city, zipcode
-    }).then(user => {
-        let completed = true;
-        Cart.create({
-            userId: user.id
-        }).catch(err => {
-            completed = false;
-            res.status(400).json(err);
-        })
-
-        Social.create({
-            linkedin,facebook,instagram,twitter,
-            userId: user.id
-        }).catch(err => {
-            completed = false;
-            res.status(400).json(err);
-        })
-        if(completed){
-            res.status(201).json(user);
-        }
-        
-    }).catch(err => {
-        res.status(400).json(err);
-    })
-})
-
 router.put('/:userid', (req, res) => { // Update user
     const { userid } = req.params;
     
@@ -58,11 +28,17 @@ router.put('/:userid', (req, res) => { // Update user
             if(!user){
                 return res.sendStatus(404);
             }
-            const { name, state, city, zipcode, linkedin, instagram, twitter, facebook } = req.body;
-            user.name = name;
+            const { firstName, lastName, email, password, 
+                state, city, zipcode, 
+                linkedin, instagram, twitter, facebook, profilePic } = req.body;
+            user.firstName = firstName;
+            user.lastName = lastName;
+            user.email = email;
             user.state = state;
             user.city = city;
             user.zipcode = zipcode;
+            user.password = password;
+            user.profilePic = profilePic;
             Social.findByPk(userid)
                 .then(social => {
                     if(!social){
@@ -84,6 +60,12 @@ router.put('/:userid', (req, res) => { // Update user
                 .catch(err => {
                     res.status(400).json(err);
                 })
+        })
+        .then(user => {
+            req.login(user, () => res.status(201).json(user))
+        })
+        .catch(err => {
+            res.status(400).json({ msg: "Failed Signup", err });
         })
     
 });
