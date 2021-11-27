@@ -1,28 +1,27 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
+  // Switch,
   Route,
-  Link,
-  NavLink
+  // Link,
+  // NavLink
 } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { createTheme, ThemeProvider, Toolbar } from '@material-ui/core';
-import PostsListPage from './pages/PostsListPage';
-import PostFormPage from './pages/PostFormPage';
-import ShowPostPage from './pages/ShowPostPage';
-import AboutUsPage from './pages/AboutUsPage';
+// import PostsListPage from './pages/PostsListPage';
+// import PostFormPage from './pages/PostFormPage';
+// import ShowPostPage from './pages/ShowPostPage';
+// import AboutUsPage from './pages/AboutUsPage';
 import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
+// import Typography from "@material-ui/core/Typography";
+// import Card from "@material-ui/core/Card";
+// import CardContent from "@material-ui/core/CardContent";
+// import CardMedia from "@material-ui/core/CardMedia";
 import Navbar from './components/NavBar';
 import SellArtPage from './pages/SellArtPage';
-import ArtistList from './pages/ArtistList';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { mergeClasses } from '@material-ui/styles';
-import toolbar from '@material-ui/core/Toolbar';
+// import CssBaseline from '@material-ui/core/CssBaseline';
+// import { mergeClasses } from '@material-ui/styles';
+// import toolbar from '@material-ui/core/Toolbar';
 
 import './index.css';
 
@@ -95,7 +94,6 @@ class App extends React.Component {
               {/* add this toolbar to push the rest of the content down on the page, so nothing is hidden by navabar */}
               <Toolbar /> 
               <Route path="/SellWithUs" component={SellArtPage} />
-              <Route path = "/ArtistList" component={ArtistList}/>
             </div>
           </Container>
         </ThemeProvider>
