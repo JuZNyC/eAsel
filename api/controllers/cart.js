@@ -23,15 +23,6 @@ router.get('/:userid', (req,res) => { //get users cart information
     })
 });
 
-router.post("/:userid/new", (req,res) => {
-  const {userid} = req.params;
-  Cart.create({
-    userId: userid
-    }).catch(err => {
-      res.status(400).json(err);
-})
-})
-
 //adds a new item into a users cart
 router.post('/:userid/:itemid/new', (req, res) => { //Update Cart (Delete item or Add Item)
   const { userid, itemid } = req.params;

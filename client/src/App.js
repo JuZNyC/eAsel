@@ -14,7 +14,8 @@ import PostsListPage from './pages/PostsListPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
-import LoginPage from './components/Login';
+import LoginPage from './pages/Login';
+import RegisterPage from './pages/Register';
 
 // Misc Components
 import Container from "@material-ui/core/Container";
@@ -66,6 +67,7 @@ class App extends React.Component {
               <Toolbar /> 
               <Route path="/SellWithUs" component={SellArtPage} />
               <Route path="/login" component={LoginPage} />
+              <Route path="/signup" component={RegisterPage} />
             </div>
           </Container>
         </ThemeProvider>

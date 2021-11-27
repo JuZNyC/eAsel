@@ -13,11 +13,10 @@ import AuthForm from '../components/AuthForm';
 //     });
 //   };
 
-export default function Login() {
+export default function Signup() {
   return (
     <div>
-      <AuthForm type="Log In" />
+      <AuthForm type="Sign Up"/>
     </div>
-    
   )
 }
