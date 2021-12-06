@@ -17,9 +17,10 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import image from '../img/background5.png';
 import AuthButton from './AuthButton';
 import { AuthContext } from '../context/AuthContext';
+
 const navigationLinks = [
     { name: "Artists", href: "/artistlist" },
-    { name: "Buy", href:""},
+    { name: "Buy", href:"/buy"},
     { name: "Sell", href: "/sellwithus" },
     { name: "Cart", href: "" },
     // { name: "Login", href: "/login" },
@@ -50,107 +51,114 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     const auth = useContext(AuthContext);
     return (
-        <AppBar className={styles.appbar} >
-            <Container maxWidth="md">
-                
-                <Toolbar>
-                    <Link href="/" >
-                        <img src={logo} alt="logo" className={styles.logo} />
-                    </Link>
-                    
-                    <Hidden xsDown>
-                        
-                        {navigationLinks.map((item) => (
-                            <Link
-                                className={styles.link}
-                                color="textPrimary"
-                                variant="button"
-                                underline="none"
-                                href={item.href}
-                                key={item.name}
-                            r>
-                                {item.name}
-                            </Link>
-                        ))}
-                        <AuthButton />
-                    </Hidden>
+      <AppBar className={styles.appbar}>
+        <Container maxWidth="md">
+          <Toolbar>
+            <Link href="/">
+              <img src={logo} alt="logo" className={styles.logo} />
+            </Link>
 
-                    <Hidden smUp>
-                        
-                        <IconButton onClick={() => setOpen(true)}>
-                            <MenuIcon fontSize="large" color="secondary" />
-                        </IconButton>
+            <Hidden xsDown>
+              {navigationLinks.map((item) => (
+                <Link
+                  className={styles.link}
+                  color="textPrimary"
+                  variant="button"
+                  underline="none"
+                  href={item.href}
+                  key={item.name}
+                  r //um hello? 
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <AuthButton />
+            </Hidden>
 
-                    </Hidden>
+            <Hidden smUp>
+              <IconButton onClick={() => setOpen(true)}>
+                <MenuIcon fontSize="large" color="secondary" />
+              </IconButton>
+            </Hidden>
 
-                    {auth.isAuthenticated && 
-                        <>
-                                <IconButton
-                                color="secondary"
-                                href={"/profile"} //get ModalDialog to open when pressing the customer icon
-                            >
-                                <AccountCircleOutlinedIcon fontSize="large" />
-                            </IconButton>
-                        </>
-                    }
-                </Toolbar>
-            </Container>
+            {auth.isAuthenticated && (
+              <>
+                <IconButton
+                  color="secondary"
+                  href={"/profile"} //get ModalDialog to open when pressing the customer icon
+                >
+                  <AccountCircleOutlinedIcon fontSize="large" />
+                </IconButton>
+              </>
+            )}
+          </Toolbar>
+        </Container>
 
-            <SwipeableDrawer
-                anchor="right"
-                open={open}
-                onOpen={() => setOpen(true)}
-                onClose={() => setOpen(false)}
-            >
-                <div
-                    onClick={() => setOpen(false)}
-                    onKeyPress={() => setOpen(false)}
-                    role="button"
-                    tabIndex={0}>
-                    <IconButton>
-                        <ChevronRightIcon color="secondary" />
-                    </IconButton>
-                </div>
+        <SwipeableDrawer
+          anchor="right"
+          open={open}
+          onOpen={() => setOpen(true)}
+          onClose={() => setOpen(false)}
+        >
+          <div
+            onClick={() => setOpen(false)}
+            onKeyPress={() => setOpen(false)}
+            role="button"
+            tabIndex={0}
+          >
+            <IconButton>
+              <ChevronRightIcon color="secondary" />
+            </IconButton>
+          </div>
 
-                <Divider />
+          <Divider />
 
-                <List>
-                    <AuthButton />
-                    {auth.isAuthenticated ?
-                        (navigationLinks.map((item) => (
-                        <ListItem key={item.name}>
-                            <Link
-                                className={styles.link}
-                                color="textPrimary"
-                                variant="button"
-                                underline="none"
-                                href={item.href}
-                            >
-                                {item.name}
-                            </Link>
+          <List>
+            <AuthButton />
+            {auth.isAuthenticated ? (
+              navigationLinks.map((item) => (
+                <ListItem key={item.name}>
+                  <Link
+                    className={styles.link}
+                    color="textPrimary"
+                    variant="button"
+                    underline="none"
+                    href={item.href}
+                  >
+                    {item.name}
+                  </Link>
+                </ListItem>
+              ))
+            ) : (
+              <List>
+                <ListItem>
+                  <Link
+                    className={styles.link}
+                    color="textPrimary"
+                    variant="button"
+                    underline="none"
+                    href={navigationLinks[0].href}
+                  >
+                    {navigationLinks[0].name}
+                  </Link>
+                </ListItem>
 
-                        </ListItem>
-                    )))
-                            :
-                        <ListItem >
-                            <Link
-                                className={styles.link}
-                                color="textPrimary"
-                                variant="button"
-                                underline="none"
-                                href={navigationLinks[0].href}
-                            >
-                                {navigationLinks[0].name}
-                            </Link>
-
-                        </ListItem>
-                }
-                    
-                    
-                </List>
-            </SwipeableDrawer>
-        </AppBar>
-
+                <ListItem>
+                  <Link
+                    className={styles.link}
+                    color="textPrimary"
+                    variant="button"
+                    underline="none"
+                    href={navigationLinks[1].href}
+                  >
+                    {navigationLinks[1].name}
+                  </Link>
+                </ListItem>
+              </List>
+            )}
+          </List>
+        </SwipeableDrawer>
+      </AppBar>
     );
 };
 export default Navbar;

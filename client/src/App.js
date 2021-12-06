@@ -7,6 +7,7 @@ import {
   NavLink
 } from 'react-router-dom';
 import { createTheme, ThemeProvider, Toolbar } from '@material-ui/core';
+import { Container } from "@material-ui/core";
 
 //PAGES
 import PostsListPage from './pages/PostsListPage';
@@ -17,12 +18,12 @@ import ArtistPage from './pages/ArtistPage';
 import ArtistList from './pages/ArtistList';
 import SellArtPage from './pages/SellArtPage';
 import LoginForm from './components/LoginForm';
-
-import { Container}  from "@material-ui/core";
+import BuyHomePage from './pages/BuyHomePage';
 import Navbar from './components/NavBar';
 import './index.css';
 import { AuthProvider  } from './context/AuthContext';
 import SignUpForm from './components/SignUpForm';
+import ProfilePage from './pages/ProfilePage';
 // var request = require('superagent');
 
 // var clientID = 'bdb593999fa5f2db388b',
@@ -96,6 +97,7 @@ class App extends React.Component {
                   <Route path="/Login" component={LoginForm} />
                   <Route path="/Signup" component={SignUpForm} />
                   <Route path="/Buy" component={BuyHomePage} />
+                  <Route path="/Profile" component={ProfilePage} />
                 </Switch>
               </div>
             </Container>

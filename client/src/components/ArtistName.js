@@ -5,7 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardActionArea from '@material-ui/core/CardActionArea';
 
-export default function ArtistName({artist, picture}) { 
+export default function ArtistName({artist}) { 
 
     return (
     <div>
@@ -18,13 +18,13 @@ export default function ArtistName({artist, picture}) {
                     image= {artist.profilePic}
                     alt="artist work"
                      />
-                     <CardContent>
-                         <Typography gutterBottom variant="h5" component="div">
-                            {artist.firstName} {artist.lastName}
-                         </Typography>
-                     </CardContent>
-                </CardActionArea>
-            </Card> 
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {artist.firstName} {artist.lastName}
+                    </Typography>
+                </CardContent>
+            </CardActionArea>
+        </Card> 
     </div>
     );
    

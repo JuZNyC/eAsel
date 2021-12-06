@@ -224,7 +224,7 @@ export default function BuyHomePage() {
   const addToCart = () => {
     //add item to to specific user's cart
     console.log("adding ", selectedTile);
-    setOpen(false);
+    
 
     fetch(`api/cart/${id}/:itemid/new`, {
       //replace with user id from the
@@ -246,6 +246,7 @@ export default function BuyHomePage() {
       });
 
     console.log("yay");
+    setOpen(false);
   };
 
   const descriptionOpen = () => {
