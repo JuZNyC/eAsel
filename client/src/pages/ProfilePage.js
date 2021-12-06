@@ -1,27 +1,28 @@
-import { Typography , Paper} from '@material-ui/core';
-import React, { Component } from 'react';
+import React from 'react';
 import LoginForm from '../components/LoginForm';
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from 'react';
-
-
-import {  Card, Avatar, CardContent } from "@material-ui/core";
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {
+  Avatar,
+  AppBar,
+  Box,
+  Tabs,
+  Tab,
+  Typography,
+} from "@material-ui/core";
+import Accordion from '@material-ui/material/Accordion';
+import AccordionSummary from '@material-ui/material/AccordionSummary';
+import AccordionDetails from '@material-ui/material/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { List , ListItem ,ListItemIcon , ListItemText } from "@material-ui/core";
-//import { Instagram } from "@mui/icons-material";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import PinterestIcon from "@mui/icons-material/Pinterest";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import { makeStyles } from "@mui/styles";
-import { CardHeader } from "@material-ui/core";
+import InstagramIcon from "@materail-ui/icons/Instagram";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import PinterestIcon from "@material-ui/icons/Pinterest";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import { makeStyles } from "@material-ui/styles";
 import PropTypes from "prop-types";
-import Stack from "@mui/material/Stack";
-import { AppBar , Box , Tabs, Tab} from "@material-ui/core";
+import Stack from "@material-ui/material/Stack";
 
 //include edit option- make this a form? to send edits to database. 
 
