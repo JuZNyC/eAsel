@@ -23,6 +23,8 @@ import PropTypes from "prop-types";
 import Stack from "@mui/material/Stack";
 import { AppBar , Box , Tabs, Tab} from "@material-ui/core";
 
+//include edit option- make this a form? to send edits to database. 
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -80,137 +82,137 @@ function ProfilePage(){
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
-
-   if(!auth.isAuthenticated) return<LoginForm />
-    if(auth.isAuthenticated){
+   if(!auth.isAuthenticated) return<LoginForm />;
+    
+   if(auth.isAuthenticated){
      return (
-      <div className={classes.root}>
-        <Stack spacing={2}>
-          <Avatar
-            alt="Michael Cohen"
-            src="profilPic"
-            className={classes.avatar}
-          />
+       <div className={classes.root}>
+         <Stack spacing={2}>
+           <Avatar
+             alt="Michael Cohen"
+             src={auth.user.profilePic}
+             className={classes.avatar}
+           />
 
-          <AppBar position="static">
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              aria-label="simple tabs example"
-              centered
-            >
-              <Tab label="PROFILE" {...a11yProps(0)} />
-              <Tab label="SOLD" {...a11yProps(1)} />
-              <Tab label="BOUGHT" {...a11yProps(2)} />
-            </Tabs>
-          </AppBar>
-          <TabPanel value={value} index={0}>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography>Name</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  {auth.user.firstName} {auth.user.lastName}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel2a-content"
-                id="panel2a-header"
-              >
-                <Typography>email</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>hi@gmail.com</Typography>
-              </AccordionDetails>
-            </Accordion>
+           <AppBar position="static">
+             <Tabs
+               value={value}
+               onChange={handleChange}
+               aria-label="simple tabs example"
+               centered
+             >
+               <Tab label="PROFILE" {...a11yProps(0)} />
+               <Tab label="SOLD" {...a11yProps(1)} />
+               <Tab label="BOUGHT" {...a11yProps(2)} />
+             </Tabs>
+           </AppBar>
+           <TabPanel value={value} index={0}>
+             <Accordion>
+               <AccordionSummary
+                 expandIcon={<ExpandMoreIcon />}
+                 aria-controls="panel1a-content"
+                 id="panel1a-header"
+               >
+                 <Typography>Name</Typography>
+               </AccordionSummary>
+               <AccordionDetails>
+                 <Typography>
+                   {auth.user.firstName} {auth.user.lastName}
+                 </Typography>
+               </AccordionDetails>
+             </Accordion>
+             <Accordion>
+               <AccordionSummary
+                 expandIcon={<ExpandMoreIcon />}
+                 aria-controls="panel2a-content"
+                 id="panel2a-header"
+               >
+                 <Typography>email</Typography>
+               </AccordionSummary>
+               <AccordionDetails>
+                 <Typography>{auth.user.email}</Typography>
+               </AccordionDetails>
+             </Accordion>
 
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel3a-content"
-                id="panel3a-header"
-              >
-                <Typography>Social Media</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <List>
-                  <ListItem>
-                    <ListItemIcon>
-                      <InstagramIcon fontSize="large" />
-                    </ListItemIcon>
-                    <ListItemText primary="https/:" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <FacebookIcon fontSize="large" />
-                    </ListItemIcon>
-                    <ListItemText primary="https/:" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <PinterestIcon fontSize="large" />
-                    </ListItemIcon>
-                    <ListItemText primary="https/:" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <LinkedInIcon fontSize="large" />
-                    </ListItemIcon>
-                    <ListItemText primary="https/:" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <TwitterIcon fontSize="large" />
-                    </ListItemIcon>
-                    <ListItemText primary="https/:" />
-                  </ListItem>
-                </List>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel2a-content"
-                id="panel2a-header"
-              >
-                <Typography>Bio</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  blah blah blah blah blah blah blah blah blah blah blah blah{" "}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
+             <Accordion>
+               <AccordionSummary
+                 expandIcon={<ExpandMoreIcon />}
+                 aria-controls="panel3a-content"
+                 id="panel3a-header"
+               >
+                 <Typography>Social Media</Typography>
+               </AccordionSummary>
+               <AccordionDetails>
+                 <List>
+                   <ListItem>
+                     <ListItemIcon>
+                       <InstagramIcon fontSize="large" />
+                     </ListItemIcon>
+                     <ListItemText primary={auth.user.instagram} />
+                   </ListItem>
+                   <ListItem>
+                     <ListItemIcon>
+                       <FacebookIcon fontSize="large" />
+                     </ListItemIcon>
+                     <ListItemText primary={auth.user.facebook} />
+                   </ListItem>
+                   <ListItem>
+                     <ListItemIcon>
+                       <PinterestIcon fontSize="large" />
+                     </ListItemIcon>
+                     <ListItemText primary={auth.user.pinterest} />
+                   </ListItem>
+                   <ListItem>
+                     <ListItemIcon>
+                       <LinkedInIcon fontSize="large" />
+                     </ListItemIcon>
+                     <ListItemText primary={auth.user.linkedin} />
+                   </ListItem>
+                   <ListItem>
+                     <ListItemIcon>
+                       <TwitterIcon fontSize="large" />
+                     </ListItemIcon>
+                     <ListItemText primary={auth.user.twitter} />
+                   </ListItem>
+                 </List>
+               </AccordionDetails>
+             </Accordion>
+             <Accordion>
+               <AccordionSummary
+                 expandIcon={<ExpandMoreIcon />}
+                 aria-controls="panel2a-content"
+                 id="panel2a-header"
+               >
+                 <Typography>Bio</Typography>
+               </AccordionSummary>
+               <AccordionDetails>
+                 <Typography>{auth.user.bio}</Typography>
+               </AccordionDetails>
+             </Accordion>
 
-            <Accordion>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel2a-content"
-                id="panel2a-header"
-              >
-                <Typography>Location</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>New York, New York, 11210</Typography>
-              </AccordionDetails>
-            </Accordion>
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            My Buys
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            Artworks Sold
-          </TabPanel>
-        </Stack>
-      </div>
+             <Accordion>
+               <AccordionSummary
+                 expandIcon={<ExpandMoreIcon />}
+                 aria-controls="panel2a-content"
+                 id="panel2a-header"
+               >
+                 <Typography>Location</Typography>
+               </AccordionSummary>
+               <AccordionDetails>
+                 <Typography>
+                   {auth.user.city} , {auth.user.state} {auth.user.zipcode}
+                 </Typography>
+               </AccordionDetails>
+             </Accordion>
+           </TabPanel>
+           <TabPanel value={value} index={1}>
+             My Buys
+           </TabPanel>
+           <TabPanel value={value} index={2}>
+             Artworks Sold
+           </TabPanel>
+         </Stack>
+       </div>
      );}
     
 
